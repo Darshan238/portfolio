@@ -1,0 +1,1044 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Darshan Godhani - Flutter Developer</title>
+</head>
+<body>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--fb:#027DFD;--fc:#54C5F8;--fd:#0553B1;--do:#FF6D00;--bg:#07090F;--c1:#0D1117;--c2:#131A24;--c3:#1C2535;--tx:#EEF2FF;--mt:#7A8499;--br:rgba(2,125,253,0.18);--gr:linear-gradient(135deg,#027DFD,#54C5F8)}
+    html{scroll-behavior:smooth}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--tx);overflow-x:hidden;min-height:100vh}
+    .particles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+    .particle{position:absolute;border-radius:50%;animation:pFloat linear infinite;opacity:0}
+    @keyframes pFloat{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:.6}90%{opacity:.3}100%{transform:translateY(-20px) scale(1);opacity:0}}
+    .grid-bg{position:fixed;inset:0;z-index:0;background-image:linear-gradient(rgba(2,125,253,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(2,125,253,0.03) 1px,transparent 1px);background-size:48px 48px;animation:gridShift 30s linear infinite}
+    @keyframes gridShift{to{background-position:48px 48px}}
+    .orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+    .o1{width:500px;height:500px;background:rgba(2,125,253,0.12);top:-150px;right:-150px;animation:orbFloat 12s ease-in-out infinite}
+    .o2{width:400px;height:400px;background:rgba(84,197,248,0.08);bottom:10%;left:-150px;animation:orbFloat 15s ease-in-out infinite reverse}
+    .o3{width:300px;height:300px;background:rgba(255,109,0,0.06);bottom:-50px;right:15%;animation:orbFloat 10s ease-in-out infinite 3s}
+    @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-30px) scale(1.05)}}
+    nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(7,9,15,0.82);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--br)}
+    .nav-left{display:flex;align-items:center;gap:10px}
+    .nav-name{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;color:var(--fc);letter-spacing:-.3px}
+    .nav-links{display:flex;gap:28px}
+    .nav-links a{font-size:13px;font-weight:500;color:var(--mt);text-decoration:none;cursor:pointer;transition:color .2s;position:relative}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--fc);transition:width .3s}
+    .nav-links a:hover{color:var(--fc)}
+    .nav-links a:hover::after{width:100%}
+    .nav-right{display:flex;gap:10px;align-items:center}
+    .nav-share{background:rgba(84,197,248,0.1);color:var(--fc);border:0.5px solid rgba(84,197,248,0.3);padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;display:flex;align-items:center;gap:6px}
+    .nav-share:hover{background:rgba(84,197,248,0.18);transform:translateY(-1px)}
+    @media(max-width:900px){.hero{flex-direction:column;text-align:center}.hero-left{align-items:center}.hero-right{margin-top:20px}.stats-row{justify-content:center}.nav-links{display:none}}
+    @media(max-width:600px){.page{padding:0 16px 60px}.hero{padding:60px 0 40px}.hero-name{font-size:32px}.avt-wrap{width:150px;height:150px}.avt-inner{width:150px;height:150px}.skills-section{grid-template-columns:1fr}.proj-grid{grid-template-columns:1fr}.contact-wrap{grid-template-columns:1fr}.flutter-dart-wrap{flex-direction:column;gap:12px}.flutter100{flex-direction:column;gap:12px;align-items:flex-start}.sec-title{font-size:24px}.power-grid{grid-template-columns:repeat(2,1fr)}}
+    .page{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:0 24px 80px}
+    .hero{padding:88px 0 72px;display:flex;gap:48px;align-items:center;flex-wrap:wrap}
+    .hero-left{flex:1;min-width:280px;display:flex;flex-direction:column;gap:18px}
+    .hero-right{display:flex;justify-content:center;align-items:center}
+    .avt-wrap{position:relative;width:200px;height:200px}
+    .avt-ring{position:absolute;inset:-8px;border-radius:50%;border:1.5px solid transparent;background:linear-gradient(var(--bg),var(--bg)) padding-box,var(--gr) border-box;animation:ringRotate 8s linear infinite}
+    @keyframes ringRotate{to{transform:rotate(360deg)}}
+    .avt-ring2{position:absolute;inset:-18px;border-radius:50%;border:0.5px dashed rgba(84,197,248,0.3);animation:ringRotate 15s linear infinite reverse}
+    .avt-inner{width:200px;height:200px;border-radius:50%;background:linear-gradient(135deg,#1C2535,#0D1117);border:2px solid rgba(2,125,253,0.3);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;z-index:1}
+    .avt-placeholder{font-size:64px;line-height:1}
+    .avt-dots{position:absolute;top:-4px;right:-4px;z-index:2;display:flex;flex-direction:column;gap:3px}
+    .adot{width:6px;height:6px;border-radius:50%;background:var(--fc);animation:dotBlink 2s ease-in-out infinite}
+    .adot:nth-child(2){animation-delay:.4s}.adot:nth-child(3){animation-delay:.8s}
+    @keyframes dotBlink{0%,100%{opacity:.3}50%{opacity:1}}
+    .badge-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(2,125,253,0.1);border:0.5px solid rgba(2,125,253,0.3);border-radius:40px;padding:5px 14px;font-size:12px;color:var(--fc);width:fit-content;animation:fadeSlide .5s ease both}
+    .live-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 rgba(34,197,94,.4);animation:livePulse 2s infinite}
+    @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4)}70%{box-shadow:0 0 0 6px transparent}}
+    @keyframes fadeSlide{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+    .hero-name{font-size:clamp(38px,6vw,58px);font-weight:800;line-height:1.08;animation:heroUp .6s ease .1s both}
+    .hero-name .ln1{color:var(--tx);display:block}
+    .hero-name .ln2{background:var(--gr);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+    @keyframes heroUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+    .hero-bio{font-size:15px;color:var(--mt);line-height:1.75;max-width:500px;animation:heroUp .6s ease .2s both}
+    .stats-row{display:flex;gap:24px;flex-wrap:wrap;animation:heroUp .6s ease .3s both}
+    .stat-box{background:var(--c2);border:0.5px solid var(--br);border-radius:10px;padding:14px 20px;text-align:center;transition:border-color .3s,transform .2s}
+    .stat-box:hover{border-color:var(--fb);transform:translateY(-2px)}
+    .stat-n{font-size:26px;font-weight:800;font-family:'JetBrains Mono',monospace;background:var(--gr);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .stat-l{font-size:11px;color:var(--mt);margin-top:2px}
+    .hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:heroUp .6s ease .4s both}
+    .btn-p{background:var(--gr);color:#fff;border:none;padding:12px 26px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s;font-family:'Plus Jakarta Sans',sans-serif}
+    .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,125,253,.45)}
+    .btn-s{background:transparent;color:var(--fc);border:1px solid rgba(84,197,248,.4);padding:12px 26px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif}
+    .btn-s:hover{background:rgba(84,197,248,.08);transform:translateY(-2px)}
+    .sec{padding:70px 0 0}
+    .sec-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fc);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+    .sec-tag::before{content:'';width:24px;height:1px;background:var(--fc)}
+    .sec-title{font-size:30px;font-weight:800;margin-bottom:32px}
+    .sec-title span{background:var(--gr);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.vis{opacity:1;transform:none}
+    .power-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+    .power-card{background:var(--c1);border:0.5px solid var(--br);border-radius:12px;padding:16px 14px;text-align:center;transition:all .3s;position:relative;overflow:hidden;cursor:default}
+    .power-card::before{content:'';position:absolute;inset:0;background:var(--gr);opacity:0;transition:opacity .3s}
+    .power-card:hover::before{opacity:.07}
+    .power-card:hover{border-color:var(--fb);transform:translateY(-3px)}
+    .power-card.hot{border-color:rgba(2,125,253,.4)}
+    .power-card.hot::after{content:'⚡';position:absolute;top:6px;right:8px;font-size:10px}
+    .pc-icon{font-size:26px;margin-bottom:8px;display:block;position:relative;z-index:1}
+    .pc-name{font-size:12px;font-weight:600;color:var(--tx);position:relative;z-index:1}
+    .pc-lvl{font-size:10px;color:var(--mt);margin-top:3px;font-family:'JetBrains Mono',monospace;position:relative;z-index:1}
+    .pc-bar{height:2px;background:rgba(255,255,255,.06);border-radius:2px;margin-top:8px;overflow:hidden;position:relative;z-index:1}
+    .pc-fill{height:100%;border-radius:2px;background:var(--gr);width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
+    .skills-section{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .skill-group{background:var(--c1);border:0.5px solid var(--br);border-radius:14px;padding:22px}
+    .sg-title{font-size:13px;font-weight:700;color:var(--fc);margin-bottom:16px;display:flex;align-items:center;gap:6px}
+    .skill-row{margin-bottom:12px}
+    .skill-row:last-child{margin-bottom:0}
+    .sk-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+    .sk-name{font-size:13px;font-weight:500}
+    .sk-pct{font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--fc)}
+    .sk-bar{height:5px;background:rgba(255,255,255,.06);border-radius:5px;overflow:hidden}
+    .sk-fill{height:100%;border-radius:5px;background:var(--gr);width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
+    .exp-list{display:flex;flex-direction:column;gap:2px}
+    .exp-item{display:flex;gap:18px;position:relative}
+    .exp-item:not(:last-child)::after{content:'';position:absolute;left:17px;top:36px;bottom:-20px;width:1px;background:linear-gradient(to bottom,rgba(2,125,253,.4),transparent)}
+    .exp-dot{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--fb);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:border-color .3s;overflow:hidden;padding:0;background:var(--c2)}
+    .exp-dot img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+    .exp-item:hover .exp-dot{border-color:var(--fc)}
+    .exp-box{background:var(--c1);border:0.5px solid var(--br);border-radius:14px;padding:20px;flex:1;margin-bottom:22px;transition:border-color .3s,transform .3s}
+    .exp-box:hover{border-color:var(--fb);transform:translateX(4px)}
+    .exp-period{font-size:11px;font-family:'JetBrains Mono',monospace;color:#fff;background:rgba(2,125,253,.2);border:0.5px solid rgba(2,125,253,.3);padding:3px 12px;border-radius:20px;height:fit-content;white-space:nowrap}
+    .exp-desc{font-size:13px;color:var(--mt);line-height:1.7;margin-bottom:12px}
+    .tags{display:flex;flex-wrap:wrap;gap:6px}
+    .tag{font-size:11px;font-family:'JetBrains Mono',monospace;background:rgba(2,125,253,.1);color:var(--fc);border:0.5px solid rgba(2,125,253,.2);padding:3px 10px;border-radius:20px}
+    .exp-header-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+    .exp-header-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+    .exp-logo-box{width:46px;height:46px;border-radius:10px;background:#fff;padding:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;border:0.5px solid rgba(255,255,255,.15)}
+    .exp-logo-box img{width:100%;height:100%;object-fit:contain}
+    .exp-company-name{font-size:15px;font-weight:700;color:var(--tx);line-height:1.2;margin-bottom:3px}
+    .exp-role-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+    .exp-role-text{font-size:12px;color:var(--mt)}
+    .exp-type-badge{font-size:10px;padding:2px 8px;border-radius:20px;background:rgba(84,197,248,0.1);border:0.5px solid rgba(84,197,248,0.3);color:#54C5F8;font-family:'JetBrains Mono',monospace}
+
+    .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+    .proj-card{background:var(--c1);border:0.5px solid var(--br);border-radius:16px;overflow:hidden;transition:all .35s;cursor:pointer}
+    .proj-card:hover{border-color:var(--fb);transform:translateY(-6px);box-shadow:0 20px 50px rgba(2,125,253,.18)}
+    .proj-screen{height:160px;background:var(--c3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .phone-frame{width:52px;height:92px;border-radius:12px;border:2px solid rgba(255,255,255,.15);background:var(--c2);display:flex;flex-direction:column;overflow:hidden;position:relative;z-index:1}
+    .ph-notch{width:18px;height:3px;background:rgba(255,255,255,.2);border-radius:2px;margin:4px auto 3px;flex-shrink:0}
+    .ph-screen{flex:1;display:flex;align-items:center;justify-content:center;font-size:14px;overflow:hidden}
+    .ph-screen img{width:100%;height:100%;object-fit:cover;display:block}
+    .ph-home{width:14px;height:2px;background:rgba(255,255,255,.2);border-radius:2px;margin:3px auto 4px;flex-shrink:0}
+    .proj-screen-label{position:absolute;top:8px;right:10px;font-size:10px;font-family:'JetBrains Mono',monospace;padding:3px 9px;border-radius:12px}
+    .live{background:rgba(34,197,94,.15);color:#22c55e;border:0.5px solid rgba(34,197,94,.3)}
+    .dev{background:rgba(255,109,0,.15);color:#FF6D00;border:0.5px solid rgba(255,109,0,.3)}
+    .proj-body{padding:18px}
+    .proj-name{font-size:15px;font-weight:700;margin-bottom:6px}
+    .proj-desc{font-size:12px;color:var(--mt);line-height:1.65;margin-bottom:12px}
+    .proj-tech{display:flex;flex-wrap:wrap;gap:5px}
+    .proj-view-hint{font-size:11px;color:var(--fc);margin-top:10px;display:flex;align-items:center;gap:4px;opacity:.7}
+
+    /* ── CONTACT CARDS – clickable to copy ── */
+    .contact-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+    .con-card{background:var(--c1);border:0.5px solid var(--br);border-radius:14px;padding:20px;display:flex;align-items:center;gap:14px;transition:all .3s;cursor:pointer;position:relative;overflow:hidden}
+    .con-card:hover{border-color:var(--fc);transform:translateY(-3px)}
+    .con-card:active{transform:scale(.97)}
+    .con-copy-hint{position:absolute;bottom:8px;right:12px;font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--mt);opacity:0;transition:opacity .2s}
+    .con-card:hover .con-copy-hint{opacity:1}
+    .con-copied-flash{position:absolute;inset:0;background:rgba(34,197,94,.12);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#22c55e;opacity:0;pointer-events:none;transition:opacity .2s}
+    .con-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+    .ci-mail{background:rgba(2,125,253,.15)}.ci-gh{background:rgba(255,255,255,.08)}.ci-li{background:rgba(0,119,181,.2)}.ci-loc{background:rgba(255,109,0,.15)}
+    .con-info{flex:1;min-width:0}
+    .con-label{font-size:11px;color:var(--mt);margin-bottom:3px}
+    .con-val{font-size:13px;font-weight:600;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .flutter-dart-wrap{display:flex;gap:20px;margin-bottom:32px}
+    .flutter-dart-wrap .flutter100{margin-bottom:0;flex:1}
+    .flutter100{display:flex;align-items:center;gap:20px;background:var(--c2);border:0.5px solid rgba(2,125,253,.25);border-radius:16px;padding:20px 24px;flex-wrap:wrap}
+    .f100-item{display:flex;align-items:center;gap:10px}
+    .f100-text{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;background:var(--gr);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .f100-bar-wrap{flex:1;min-width:120px}
+    .f100-bar-bg{height:6px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden}
+    .f100-bar-fill{height:100%;background:var(--gr);border-radius:6px;animation:barFill100 2s cubic-bezier(.4,0,.2,1) .5s both}
+    @keyframes barFill100{from{width:0}to{width:100%}}
+
+    .proj-detail-overlay{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,0);transition:background .3s}
+    .proj-detail-overlay.open{display:flex;background:rgba(0,0,0,.85)}
+    .proj-detail-page{position:absolute;right:0;top:0;bottom:0;width:min(720px,100%);background:var(--bg);overflow-y:auto;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);border-left:0.5px solid var(--br)}
+    .proj-detail-overlay.open .proj-detail-page{transform:translateX(0)}
+    .pdp-close{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:rgba(7,9,15,0.9);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--br)}
+    .pdp-close-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.06);border:0.5px solid rgba(255,255,255,.12);color:var(--tx);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+    .pdp-close-btn:hover{background:rgba(255,255,255,.12)}
+    .pdp-back-text{font-size:13px;color:var(--mt)}
+    .pdp-body{padding:32px 24px 60px}
+    .pdp-header{display:flex;align-items:center;gap:20px;margin-bottom:28px}
+    .pdp-emoji{width:72px;height:72px;border-radius:20px;background:var(--c2);border:0.5px solid var(--br);display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;overflow:hidden}
+    .pdp-emoji img{width:100%;height:100%;object-fit:cover;border-radius:18px}
+    .pdp-proj-name{font-size:26px;font-weight:800;margin-bottom:6px}
+    .pdp-status-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-family:'JetBrains Mono',monospace;padding:4px 12px;border-radius:20px}
+    .pdp-mockup{width:100%;border-radius:16px;background:var(--c2);border:0.5px solid var(--br);overflow:hidden;margin-bottom:28px;display:flex;align-items:flex-end;justify-content:center;padding:28px 20px 0;gap:12px}
+    .pdp-phone{width:90px;height:170px;border-radius:18px;border:2px solid rgba(255,255,255,.18);background:var(--c3);display:flex;flex-direction:column;overflow:hidden;flex-shrink:0;box-shadow:0 20px 40px rgba(0,0,0,.5);transform:translateY(0)}
+    .pdp-phone-sm{width:68px;height:132px;border-radius:14px;border:2px solid rgba(255,255,255,.1);background:var(--c3);display:flex;flex-direction:column;overflow:hidden;opacity:.75;flex-shrink:0;transform:translateY(8px)}
+    .pdp-pscreen{flex:1;display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden}
+    .pdp-pscreen img{width:100%;height:100%;object-fit:cover;display:block}
+    .pdp-ph-notch{width:22px;height:3px;background:rgba(255,255,255,.2);border-radius:2px;margin:5px auto 4px;flex-shrink:0}
+    .pdp-ph-home{width:18px;height:2px;background:rgba(255,255,255,.2);border-radius:2px;margin:4px auto 6px;flex-shrink:0}
+    .pdp-ph-notch-sm{width:16px;height:3px;background:rgba(255,255,255,.15);border-radius:2px;margin:4px auto 3px;flex-shrink:0}
+    .pdp-ph-home-sm{width:14px;height:2px;background:rgba(255,255,255,.15);border-radius:2px;margin:3px auto 5px;flex-shrink:0}
+    .pdp-section{margin-bottom:28px}
+    .pdp-sec-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fc);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .pdp-sec-label::before{content:'';width:16px;height:1px;background:var(--fc)}
+    .pdp-tech-wrap{display:flex;flex-wrap:wrap;gap:8px}
+    .pdp-tech-tag{font-size:12px;font-family:'JetBrains Mono',monospace;background:rgba(2,125,253,.1);color:var(--fc);border:0.5px solid rgba(2,125,253,.25);padding:5px 14px;border-radius:20px}
+    .features-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media(max-width:480px){.features-grid{grid-template-columns:1fr}.app-cards-grid{grid-template-columns:1fr}}
+    .feat-item{background:var(--c1);border:0.5px solid var(--br);border-radius:12px;padding:16px;display:flex;gap:12px;align-items:flex-start;transition:border-color .3s}
+    .feat-item:hover{border-color:rgba(2,125,253,.4)}
+    .feat-icon{font-size:20px;margin-top:1px;flex-shrink:0}
+    .feat-title{font-size:13px;font-weight:700;margin-bottom:3px}
+    .feat-desc{font-size:12px;color:var(--mt);line-height:1.6}
+    .role-banner{background:linear-gradient(135deg,rgba(2,125,253,.1),rgba(84,197,248,.07));border:0.5px solid rgba(2,125,253,.2);border-radius:12px;padding:18px 20px;margin-bottom:28px;display:flex;align-items:center;gap:14px}
+    .role-icon{font-size:24px}
+    .role-label{font-size:11px;color:var(--mt);margin-bottom:3px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase}
+    .role-val{font-size:15px;font-weight:700;color:var(--tx)}
+    .detail-block{background:var(--c1);border:0.5px solid var(--br);border-radius:14px;padding:20px 22px;margin-bottom:16px}
+    .detail-block-title{font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--fc);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .detail-block-title::before{content:'';width:14px;height:1px;background:var(--fc)}
+    .detail-block-text{font-size:13px;color:var(--mt);line-height:1.8}
+    .detail-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .detail-list li{font-size:13px;color:var(--mt);line-height:1.6;padding-left:18px;position:relative}
+    .detail-list li::before{content:'▸';position:absolute;left:0;color:var(--fc);font-size:11px;top:1px}
+
+    /* ── SHARE MODAL ── */
+    .share-modal{display:none;position:fixed;inset:0;z-index:700;background:rgba(0,0,0,.75);align-items:center;justify-content:center}
+    .share-modal.open{display:flex}
+    .sm-box{background:#111827;border:0.5px solid rgba(2,125,253,.3);border-radius:20px;padding:28px;width:90%;max-width:440px}
+    .sm-title{font-size:18px;font-weight:700;color:var(--fc);margin-bottom:6px}
+    .sm-sub{font-size:13px;color:var(--mt);margin-bottom:22px}
+    .sm-url-row{display:flex;gap:8px;margin-bottom:20px}
+    .sm-url{flex:1;background:var(--c3);border:0.5px solid rgba(84,197,248,.2);border-radius:8px;padding:10px 14px;color:var(--tx);font-size:12px;font-family:'JetBrains Mono',monospace;outline:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .sm-copy-btn{background:var(--gr);color:#fff;border:none;padding:10px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap;transition:transform .2s}
+    .sm-copy-btn:hover{transform:scale(1.03)}
+    .sm-copy-btn.copied{background:linear-gradient(135deg,#22c55e,#16a34a)}
+    .sm-platforms{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+    .sm-plat{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--c2);border:0.5px solid var(--br);border-radius:10px;cursor:pointer;transition:border-color .2s}
+    .sm-plat:hover{border-color:rgba(84,197,248,.4)}
+    .sm-plat-icon{font-size:20px;width:32px;text-align:center}
+    .sm-plat-info{flex:1}
+    .sm-plat-name{font-size:13px;font-weight:600}
+    .sm-plat-desc{font-size:11px;color:var(--mt)}
+    .sm-plat-arr{font-size:14px;color:var(--mt)}
+    .sm-close{width:100%;background:transparent;color:var(--mt);border:0.5px solid rgba(255,255,255,.12);padding:10px;border-radius:8px;font-size:13px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:border-color .2s}
+    .sm-close:hover{border-color:rgba(255,255,255,.3)}
+    .sm-preview-note{font-size:11px;color:var(--mt);background:rgba(84,197,248,.05);border:0.5px solid rgba(84,197,248,.15);border-radius:8px;padding:10px 14px;margin-bottom:16px;display:flex;gap:8px;align-items:flex-start}
+    .sm-preview-note span{color:var(--fc)}
+    .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a2535;border:0.5px solid rgba(34,197,94,.4);color:#22c55e;padding:10px 22px;border-radius:30px;font-size:13px;font-weight:600;z-index:900;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    .company-header-banner{background:linear-gradient(135deg,rgba(2,125,253,.12),rgba(84,197,248,.06));border:0.5px solid rgba(2,125,253,.25);border-radius:16px;padding:20px 22px;margin-bottom:24px;display:flex;align-items:center;gap:16px}
+    .company-name-big{font-size:20px;font-weight:800;color:var(--tx);margin-bottom:4px}
+    .company-meta{display:flex;gap:10px;flex-wrap:wrap}
+    .company-badge{font-size:11px;font-family:'JetBrains Mono',monospace;padding:3px 12px;border-radius:20px}
+    .cb-role{background:rgba(2,125,253,.15);color:var(--fc);border:0.5px solid rgba(2,125,253,.3)}
+    .cb-type{background:rgba(34,197,94,.12);color:#22c55e;border:0.5px solid rgba(34,197,94,.3)}
+    .cb-period{background:rgba(255,109,0,.12);color:#FF6D00;border:0.5px solid rgba(255,109,0,.3)}
+    .proj-sub-section{margin-bottom:28px}
+    .proj-sub-title{font-size:15px;font-weight:700;color:var(--tx);margin-bottom:16px;padding-bottom:10px;border-bottom:0.5px solid var(--br);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .proj-sub-num{width:24px;height:24px;border-radius:50%;background:var(--gr);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+    .live-app-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(34,197,94,.15),rgba(34,197,94,.07));border:1px solid rgba(34,197,94,.45);color:#22c55e;padding:10px 20px;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;cursor:pointer;transition:all .25s;font-family:'Plus Jakarta Sans',sans-serif;margin-top:14px}
+    .live-app-btn:hover{background:linear-gradient(135deg,rgba(34,197,94,.25),rgba(34,197,94,.12));transform:translateY(-2px);box-shadow:0 6px 22px rgba(34,197,94,.22)}
+    .live-app-btn .lbdot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:livePulse 2s infinite;flex-shrink:0}
+  </style>
+
+  <div class="particles" id="particles"></div>
+  <div class="grid-bg"></div>
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+
+  <nav>
+    <div class="nav-left">
+      <img src="https://docs.flutter.dev/assets/images/flutter-logo-sharing.png" alt="Flutter Logo" style="width:30px;height:30px;margin-right:10px;">
+      <span class="nav-name" id="navName">Flutter Developer</span>
+    </div>
+    <div class="nav-links">
+      <a onclick="goTo('skills')">Skills</a>
+      <a onclick="goTo('experience')">Experience</a>
+      <a onclick="goTo('education')">Education</a>
+      <a onclick="goTo('projects')">Projects</a>
+      <a onclick="goTo('contact')">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-share" onclick="openShare()">🔗 Share</button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="hero">
+      <div class="hero-left">
+        <div class="badge-pill"><div class="live-dot"></div><span>Open to work · Flutter Developer</span></div>
+        <h1 class="hero-name">
+          <span class="ln1" id="heroName">Darshan Godhani</span>
+          <span class="ln2">Flutter Developer</span>
+        </h1>
+        <p class="hero-bio" id="heroBio">Delivering pixel-perfect, high-performance cross-platform applications backed by 5+ years of expertise. Specialist in fluid animations, real-time systems, and building scalable, production-ready mobile architectures.</p>
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-n">5+</div><div class="stat-l">Years Exp.</div></div>
+          <div class="stat-box"><div class="stat-n">20+</div><div class="stat-l">Apps Built</div></div>
+          <div class="stat-box"><div class="stat-n">15+</div><div class="stat-l">Clients</div></div>
+        </div>
+        <div class="hero-btns">
+          <button class="btn-p" onclick="goTo('contact')">🚀 Hire Me</button>
+          <button class="btn-s" onclick="openShare()">🔗 Share Portfolio</button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="avt-wrap">
+          <div class="avt-ring"></div><div class="avt-ring2"></div>
+          <div class="avt-inner"><div class="avt-placeholder">👨‍💻</div></div>
+          <div class="avt-dots"><div class="adot"></div><div class="adot"></div><div class="adot"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flutter-dart-wrap">
+      <div class="flutter100">
+        <div class="f100-item">
+          <img src="https://docs.flutter.dev/assets/images/flutter-logo-sharing.png" alt="Flutter" style="width:30px;height:30px;margin-right:10px;">
+          <span class="f100-text">Flutter 100%</span>
+        </div>
+        <div class="f100-bar-wrap"><div class="f100-bar-bg"><div class="f100-bar-fill"></div></div></div>
+      </div>
+      <div class="flutter100">
+        <div class="f100-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Dart_logo.png/500px-Dart_logo.png" alt="Dart" style="width:30px;height:30px;margin-right:10px;">
+          <span class="f100-text">Dart 100%</span>
+        </div>
+        <div class="f100-bar-wrap"><div class="f100-bar-bg"><div class="f100-bar-fill" style="animation-delay:.8s"></div></div></div>
+      </div>
+    </div>
+
+    <section id="skills" class="sec reveal">
+      <div class="sec-tag">expertise</div>
+      <div class="sec-title">Power <span>Skills</span></div>
+      <div class="power-grid" id="powerGrid"></div>
+      <div class="skills-section" style="margin-top:24px" id="skillGroups"></div>
+    </section>
+
+    <section id="experience" class="sec reveal">
+      <div class="sec-tag">career</div>
+      <div class="sec-title">Work <span>Experience</span></div>
+      <div class="exp-list" id="expList"></div>
+    </section>
+
+    <section id="education" class="sec reveal">
+      <div class="sec-tag">academics</div>
+      <div class="sec-title">My <span>Education</span></div>
+      <div class="exp-list" id="eduList"></div>
+    </section>
+
+    <section id="projects" class="sec reveal">
+      <div class="sec-tag">portfolio</div>
+      <div class="sec-title">Featured <span>Projects</span></div>
+      <div class="proj-grid" id="projGrid"></div>
+    </section>
+
+    <section id="contact" class="sec reveal">
+      <div class="sec-tag">connect</div>
+      <div class="sec-title">Get In <span>Touch</span></div>
+      <p style="font-size:13px;color:var(--mt);margin-bottom:20px;margin-top:-16px;">👆 Click any card to copy the details</p>
+      <div class="contact-wrap" id="contactWrap"></div>
+    </section>
+  </div>
+
+  <div class="proj-detail-overlay" id="projDetailOverlay" onclick="handleDetailOverlayClick(event)">
+    <div class="proj-detail-page" id="projDetailPage">
+      <div class="pdp-close">
+        <button class="pdp-close-btn" onclick="closeDetail()">✕</button>
+        <span class="pdp-back-text">← Back to Portfolio</span>
+      </div>
+      <div class="pdp-body" id="pdpBody"></div>
+    </div>
+  </div>
+
+  <!-- SHARE MODAL — no download button, GitHub Pages URL support -->
+  <div class="share-modal" id="shareModal" onclick="handleShareOverlayClick(event)">
+    <div class="sm-box">
+      <div class="sm-title">🔗 Share Portfolio</div>
+      <div class="sm-sub">Share your portfolio with clients or recruiters</div>
+      <div class="sm-preview-note"><span>💡</span><div id="smHostNote">Host on GitHub Pages to get a shareable link — e.g. <b>darshan238.github.io/portfolio</b></div></div>
+      <div class="sm-url-row">
+        <input class="sm-url" id="shareUrl" readonly>
+        <button class="sm-copy-btn" id="smCopyBtn" onclick="copyShareUrl()">Copy</button>
+      </div>
+      <div style="font-size:12px;color:var(--mt);margin-bottom:14px;font-weight:600;letter-spacing:1px;font-family:'JetBrains Mono',monospace">SHARE VIA</div>
+      <div class="sm-platforms">
+        <div class="sm-plat" onclick="shareViaWhatsApp()"><div class="sm-plat-icon">💬</div><div class="sm-plat-info"><div class="sm-plat-name">Share via WhatsApp</div><div class="sm-plat-desc">Send portfolio info to client on WhatsApp</div></div><div class="sm-plat-arr">→</div></div>
+        <div class="sm-plat" onclick="copyProfileText()"><div class="sm-plat-icon">📋</div><div class="sm-plat-info"><div class="sm-plat-name">Copy Profile Summary</div><div class="sm-plat-desc">Copy text summary for LinkedIn / messages</div></div><div class="sm-plat-arr">→</div></div>
+      </div>
+      <button class="sm-close" onclick="closeShare()">Close</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+  const DATA = {
+    hero: { name:'Darshan Godhani', bio: 'Delivering pixel-perfect, high-performance cross-platform applications backed by 5+ years of expertise. Specialist in fluid animations, real-time systems, and building scalable, production-ready mobile architectures.', yrs: '5+', apps: '20+', clients: '15+' },
+    contact: [
+      { icon: '📧', label: 'Email', val: 'darshangodhani20@email.com', cls: 'ci-mail', copyVal: 'darshangodhani20@email.com' },
+      { icon: '🐙', label: 'GitHub', val: 'github.com/darshan238', cls: 'ci-gh', copyVal: 'https://github.com/darshan238' },
+      { icon: '💼', label: 'LinkedIn', val: 'linkedin.com/in/yourname', cls: 'ci-li', copyVal: 'https://linkedin.com/in/yourname' },
+      { icon: '📍', label: 'Location', val: 'Surat, Gujarat, India', cls: 'ci-loc', copyVal: 'Surat, Gujarat, India' },
+    ],
+    exp: [
+      {
+        emoji: '',
+        logo: 'https://beta.vartalaap.io/assets/icons/logo-bg.svg',
+        role: 'Flutter Developer',
+        co: 'Logictrix Infotech Pvt. Ltd.',
+        type: 'Freelancer',
+        period: '2026 – Present',
+        desc: 'Currently working at Logictrix Infotech Pvt. Ltd. on a WhatsApp-based marketing automation application, focused on enabling businesses to streamline communication and customer engagement at scale. Contributing to the development of features such as bulk messaging, template-based campaigns, real-time chat, and automated workflows using official APIs. Ensuring high performance, secure data handling, and reliable message delivery while supporting enterprise-level communication needs. Collaborating with cross-functional teams to build a scalable and efficient platform for modern business marketing and customer interaction.',
+        tags: ['Flutter','Dart','Riverpod','REST APIs','WebSockets','Socket.IO','Meta WhatsApp API','Push Notifications (FCM)','JWT Authentication','Encryption / Security','Hive','OTP Authentication'],
+        projects: [
+          {
+            icon: '',
+            name: 'WhatsApp Marketing Application',
+            status: 'ongoing',
+            liveUrl: '',
+            description: 'A robust business communication platform inspired by WhatsApp, built to handle large-scale, API-driven messaging (such as Meta integrations) that enables businesses to send transactional messages like bank alerts, OTPs, and important notifications, along with promotional and marketing campaigns, while supporting advanced features like template-based messaging, bulk broadcasting, real-time one-to-one and group chats, video calling, media sharing, and automated workflows, making it a complete solution for WhatsApp marketing and customer engagement, designed with high scalability, strong security, and seamless performance to meet enterprise-level communication needs.',
+            projectDetails: ['Enterprise-level business communication platform for large-scale messaging','Meta API integration for transactional and promotional communication','Support for OTP, alerts, notifications, and bulk campaigns','Template-based messaging system for quick and approved communication','Real-time chat, video calling, and media sharing features'],
+            responsibilities: ['Developed scalable messaging architecture for high-volume delivery','Integrated Meta APIs for official WhatsApp business communication','Built bulk broadcasting and campaign management system','Implemented real-time one-to-one and group chat with media support','Ensured data security, encryption, and session management']
+          }
+        ]
+      },
+      {
+        emoji: '',
+        logo: 'https://play-lh.googleusercontent.com/LRYiMH4djvfAix9fjXL8EMb0pQgpoeAqN5Q6ezluio7Aw3kx3-XIJfFJh9rZuntduAEx=w240-h480-rw',
+        role: 'Flutter Developer',
+        co: 'Benefic Solutions',
+        type: 'Freelancer',
+        period: '2023 – Present',
+        desc: 'Worked on a complete multi-application ecosystem consisting of four interconnected mobile apps designed for event, club, and party management. Contributed to building scalable and high-performance solutions covering user engagement, event discovery, booking systems, and entry management. Developed features like real-time communication, payment integrations, analytics dashboards, and secure authentication to ensure seamless coordination across apps.',
+        tags: ['Flutter','Dart','GetX','Firebase','Cloud Functions','FCM (Push Notifications)','REST APIs','WebSockets','Socket.IO','Razorpay','UPI Integration','Google Maps API','AR (Augmented Reality)','QR/Barcode Scanner','Hive (Local Storage)','Localization','Chart / Analytics Integration','Authentication','OTP Authentication','Performance Optimization'],
+        projects: [
+          {
+            icon: '',
+            logo: 'https://play-lh.googleusercontent.com/LRYiMH4djvfAix9fjXL8EMb0pQgpoeAqN5Q6ezluio7Aw3kx3-XIJfFJh9rZuntduAEx=w240-h480-rw',
+            name: 'PartyPal – User Application',
+            status: 'live',
+            liveUrl: 'https://play.google.com/store/apps/details?id=com.beneficsolutions.partypal',
+            description: 'Live Analytics gives you a 360-degree view of your club\'s performance by tracking sales, crowd ratios, footfalls, and popular items for data-driven decisions. Talent Booking helps you hire DJs, live bands, or chefs from a curated pool. Content Management lets you easily handle banners and social posts. Promotional Tools use AI to create eye-catching content in one click. Event Promotion allows you to effortlessly promote events and reach a wider audience on PartyPal.',
+            projectDetails: ['Club and event management system with performance analytics','Talent hiring platform for DJs, bands, and service providers','Content and media management for promotions','AI-powered promotional tools for marketing campaigns','Event promotion system to reach wider audience'],
+            responsibilities: ['Developed analytics dashboard for tracking sales and crowd insights','Built talent booking module with scalable backend integration','Implemented content management system for banners and posts','Integrated AI tools for automated promotional content generation','Handled event promotion flow and audience targeting system']
+          },
+          {
+            icon: '',
+            logo: 'https://play-lh.googleusercontent.com/GlmB5HjZxuLIPimoSyeYMvlkRjnu0I_wwVMfuiw4Au_4kuSZQidCtnoELbqWuQSC-crC=w240-h480-rw',
+            name: 'PartyPal – Service Provider App',
+            status: 'live',
+            liveUrl: 'https://play.google.com/store/apps/details?id=com.beneficsolutions.partypalprovider',
+            description: 'PartyPal is your ultimate party companion designed for party-goers, club owners, event organizers, and talented individuals, helping you discover the hottest events, explore venues with AR, connect with like-minded people, enjoy VIP access, cashback, and secure bookings.',
+            projectDetails: ['All-in-one party ecosystem for users, organizers, and service providers','Event discovery with AR-based venue exploration','Social networking and community engagement features','Business tools for analytics, content management, and promotions','Talent marketplace for DJs, chefs, performers, and creators'],
+            responsibilities: ['Developed scalable multi-role platform supporting users, clubs, and talents','Implemented AR, real-time chat, and booking systems','Built analytics and dashboard tools for organizers','Integrated secure payments and payout systems','Handled performance optimization and data management across modules']
+          },
+          {
+            icon: '',
+            logo: 'https://play-lh.googleusercontent.com/qWVrDMoZm5RXRDQk_PynHD-3aFdql337u-DMZGwyGSpE-oAqNwGm_lX1YJuHoU7A09c=w240-h480-rw',
+            name: 'PartyPal – Business (Club Owner App)',
+            status: 'live',
+            liveUrl: 'https://play.google.com/store/apps/details?id=com.beneficsolutions.partypalclub',
+            description: 'PartyPal is your gateway to the hottest parties, clubs, and events in town. Never miss out on the latest happenings with event discovery, AR-powered exploration, social connections, and complete party package booking.',
+            projectDetails: ['Event discovery platform covering clubs, concerts, and private parties','AR-based venue and event exploration for immersive previews','Social networking to connect with like-minded party enthusiasts','Complete party package booking with DJs, bands, and services'],
+            responsibilities: ['Developed user-friendly interface for seamless event browsing and booking','Implemented AR feature for real-time venue and vibe preview','Built social connection module for user interaction and networking','Integrated booking system for events and party services','Ensured smooth performance and user experience across the app']
+          },
+          {
+            icon: '',
+            logo: 'https://play-lh.googleusercontent.com/2qW16gyj4qsmUDIpFXHZ2xVpICXCpqhO3Y7-X6_NXPZXpWVqiL445L_C_V-VzuYJK0A=w240-h480-rw',
+            name: 'PartyPal – Guard App',
+            status: 'live',
+            liveUrl: 'https://play.google.com/store/apps/details?id=com.beneficsolutions.partypalguard',
+            description: 'PartyPal Guard is the ultimate solution to elevate event security and streamline entry management, empowering bouncers and entrance guards to seamlessly scan tickets, manage guest lists in real time, prevent fraud, and reduce queues.',
+            projectDetails: ['Event security and entry management system for clubs and events','QR/Barcode-based ticket scanning with fast verification','Real-time guest list management and validation','Fraud prevention system for secure event access','Queue optimization for smooth and efficient entry flow'],
+            responsibilities: ['Developed high-speed ticket scanning and validation module','Implemented real-time guest list synchronization with backend','Built secure system to prevent duplicate and fake entries','Optimized app performance for handling peak crowd scenarios','Designed smooth UI/UX for quick and efficient guard operations']
+          }
+        ]
+      },
+      {
+        emoji: '',
+        logo: 'https://media.licdn.com/dms/image/v2/D4D0BAQFmtXHLIVyhmg/company-logo_200_200/company-logo_200_200/0/1695186140817/voxycure_infotech_logo?e=2147483647&v=beta&t=M6SphHAlDblzAWPQMRfaYprafvXWrYHiUtzQ2t__3zU',
+        role: 'Flutter Developer',
+        co: 'Voxycure Infotech',
+        type: 'Freelancer',
+        period: '2023 – Present',
+        desc: 'Worked on a variety of mobile applications including quiz-based reward platforms, dating apps with real-time chat functionality, and ongoing maintenance and support for existing systems. Contributed to building interactive and user-centric features such as live messaging, reward distribution logic, user engagement flows, and profile management.',
+        tags: ['Flutter','Dart','GetX','Firebase','Cloud Firestore','FCM (Push Notifications)','REST APIs','WebSockets','Socket.IO','Hive (Local Storage)','OTP Authentication','Version Control (Git)','Performance Optimization'],
+        projects: [
+          {
+            icon: '',
+            name: 'Quiz & Rewards Application',
+            status: 'client',
+            liveUrl: '',
+            description: 'A gamified Quiz & Rewards application designed to engage users through interactive quizzes and reward-based participation, encouraging continuous user activity and retention. The app provides a seamless experience with real-time score updates, leaderboard tracking, and reward distribution systems.',
+            projectDetails: ['Quiz system with multiple categories and difficulty levels','Real-time scoring and leaderboard management','Reward distribution system based on user performance','User profile and participation tracking','Notification system for quiz updates and rewards'],
+            responsibilities: ['Developed quiz logic and dynamic question handling system','Implemented scoring and leaderboard features','Built reward calculation and distribution module','Integrated APIs for fetching quiz data and user stats','Ensured smooth performance and optimized user experience']
+          },
+          {
+            icon: '',
+            name: 'Dating & Real-Time Chat Application',
+            status: 'client',
+            liveUrl: '',
+            description: 'A modern dating application with real-time chat functionality, designed to connect users through smart matching and seamless communication. Features profile discovery, swipe-based matching, and instant messaging.',
+            projectDetails: ['User profile creation and matchmaking system','Swipe-based like/dislike interaction model','Real-time one-to-one chat functionality','Media sharing in chat','Push notifications for messages and match updates'],
+            responsibilities: ['Developed real-time chat system using sockets','Implemented matchmaking and user interaction logic','Built responsive UI for chat and profile modules','Integrated push notifications for real-time updates','Ensured data security and optimized app performance']
+          },
+          {
+            icon: '',
+            name: 'Ongoing Maintenance & Support',
+            status: 'ongoing',
+            liveUrl: '',
+            description: 'Handled ongoing maintenance and support for multiple mobile applications, ensuring stability, performance, and continuous improvement across projects.',
+            projectDetails: ['Bug fixing and issue resolution across multiple applications','Performance optimization and code refactoring','Feature enhancements based on client and user requirements','App updates and version management','Monitoring and maintaining application stability'],
+            responsibilities: ['Analyzed and resolved production issues and bugs','Optimized app performance and improved existing functionalities','Collaborated with QA and backend teams for issue tracking','Implemented minor features and UI improvements','Ensured smooth app releases and update cycles']
+          }
+        ]
+      },
+      {
+        emoji: '',
+        logo: 'https://media.licdn.com/dms/image/v2/D4D0BAQH-8foheAYxcA/company-logo_200_200/company-logo_200_200/0/1714622877913/cygnux_softtech_pvt_ltd_logo?e=2147483647&v=beta&t=FW6xtA_gh9hlYth0BJvlR2HG5tnyetndB4yiYIEybKs',
+        role: 'Senior Flutter Developer',
+        co: 'CYGNUX SOFTTECH PVT. LTD.',
+        type: 'Full Time',
+        period: '2022 – 2023',
+        desc: 'Contributed to enterprise-level logistics and transportation systems, handling complex workflows such as warehouse management, shipment tracking, and real-time operations. Played a key role in developing scalable and high-performance solutions to manage large volumes of data and ensure smooth operational flow.',
+        tags: ['Flutter','Dart','GetX','Riverpod','Firebase','Cloud Firestore','FCM (Push Notifications)','REST APIs','WebSockets','Socket.IO','Bluetooth (BLE)','QR/Barcode Scanner','Google Maps API','Hive (Local Storage)','SQLite','Charts / Analytics','Background Services','OTP Authentication','Performance Optimization','Scalable Architecture'],
+        projects: [
+          {
+            icon: '',
+            name: 'Card Game Application (Teen Patti Inspired)',
+            status: 'client',
+            liveUrl: '',
+            description: 'A card game application inspired by Teen Patti, designed to deliver an engaging and smooth single-device gaming experience with an interactive UI and fast performance.',
+            projectDetails: ['Single-player card game with smooth gameplay mechanics','Local database-based game state and data management','Interactive UI with animations and game effects','Wallet/chip system managed locally','Offline gameplay support without internet dependency'],
+            responsibilities: ['Developed complete game logic and card distribution system','Implemented local database for storing game state and user data','Built responsive and animated UI for engaging gameplay','Handled chip/wallet calculations and game flow management','Optimized app performance for smooth offline experience']
+          },
+          {
+            icon: '',
+            name: 'Transport Management System (TMS)',
+            status: 'client',
+            liveUrl: '',
+            description: 'A comprehensive Transport Management System designed to streamline logistics and transportation operations, including shipment tracking, warehouse coordination, and fleet management.',
+            projectDetails: ['Shipment tracking and real-time status updates','Warehouse management with QR code-based scanning system','Rack and inventory handling within warehouse operations','Fleet and driver management system','Order processing and delivery workflow automation'],
+            responsibilities: ['Developed warehouse modules including desk handling and inventory flow','Implemented QR code scanning for item tracking and validation','Built rack management system for organized storage handling','Integrated real-time tracking and backend APIs','Optimized performance for large-scale logistics operations']
+          },
+          {
+            icon: '',
+            name: 'Air Cargo Management App',
+            status: 'client',
+            liveUrl: '',
+            description: 'An enterprise-grade Air Cargo Management application designed to streamline end-to-end air freight operations, including shipment booking, tracking, warehouse handling, and cargo movement.',
+            projectDetails: ['Air cargo booking and shipment management system','Real-time shipment tracking and status updates','Warehouse handling with QR code-based scanning','Rack and inventory management for cargo storage','Desk-level operations handling and workflow management'],
+            responsibilities: ['Developed cargo management modules for booking and tracking','Implemented QR code scanning for cargo verification and movement','Built warehouse flow including rack and desk handling systems','Integrated APIs for real-time data synchronization','Optimized app performance for high-volume cargo operations']
+          }
+        ]
+      },
+      {
+        emoji: '',
+        logo: 'https://media.licdn.com/dms/image/v2/D4D0BAQGc8kQCnA9txg/company-logo_200_200/company-logo_200_200/0/1687860294605/bvm_infotech_ltd_logo?e=1778112000&v=beta&t=MSWSVSSkQop-UU7JGfqQVqRCWLNrFoLSO8WgP0uuKyc',
+        role: 'Flutter Developer',
+        co: 'BVM Infotech',
+        type: 'Full Time',
+        period: '2021 – 2022',
+        desc: 'Worked on healthcare-based internal applications focused on real-time data monitoring and seamless device connectivity, ensuring smooth integration between medical devices and mobile platforms.',
+        tags: ['Flutter','Dart','Firebase Authentication','Cloud Firestore','Firebase Storage','FCM (Push Notifications)','REST APIs','Image/Video Processing','Bluetooth (BLE)','GetX','Local Storage (Hive)','Charts / Data Visualization','Background Services'],
+        projects: [
+          {
+            icon: '',
+            name: 'Instagram Clone App',
+            status: 'client',
+            liveUrl: '',
+            description: 'A feature-rich social media application inspired by Instagram, allowing users to share photos and videos, interact with posts, and connect with other users in real-time.',
+            projectDetails: ['User authentication and profile management system','Photo and video upload with captions and hashtags','Feed system with like, comment, and share functionality','Real-time chat and notifications system','Follow/unfollow system with user suggestions'],
+            responsibilities: ['Developed complete UI and core functionalities of the application','Implemented media upload and storage using cloud services','Built real-time feed and interaction features','Integrated chat system and push notifications','Handled authentication, user sessions, and data management']
+          },
+          {
+            icon: '',
+            name: 'Body Temperature Monitoring App (Bluetooth)',
+            status: 'client',
+            liveUrl: '',
+            description: 'A healthcare-focused mobile application designed to monitor body temperature in real-time using Bluetooth-enabled devices, ensuring accurate and continuous health tracking.',
+            projectDetails: ['Bluetooth integration for real-time temperature data collection','Live monitoring dashboard with continuous data updates','Historical data tracking and visualization','Device pairing and connection management system','Alerts and notifications for abnormal temperature readings'],
+            responsibilities: ['Implemented Bluetooth connectivity and device communication logic','Developed real-time data streaming and UI updates','Built temperature tracking dashboard with data visualization','Handled device pairing, reconnection, and error states','Ensured secure data handling and performance optimization']
+          }
+        ]
+      }
+    ],
+    edu: [
+      {
+        emoji: '',
+        logo: 'https://media.licdn.com/dms/image/v2/C560BAQF2Obzm8OnpNg/company-logo_200_200/company-logo_200_200/0/1630642730509/darshanuniversity_logo?e=1778112000&v=beta&t=PmdSTCyjvg4e4TpHWm3_4wanwB5YxdwBUsA3WRKJoU0',
+        role: 'Computer Engineering',
+        co: 'Darshan College, Rajkot',
+        type: 'GTU',
+        period: '',
+        desc: 'Pursued Bachelor of Engineering in Computer Engineering. Gained comprehensive knowledge in software architecture, algorithms, and system design.',
+        tags: ['Computer Engineering', 'GTU']
+      },
+      {
+        emoji: '',
+        logo: 'https://media.licdn.com/dms/image/v2/C4E0BAQGPV3PCZ2jt9Q/company-logo_200_200/company-logo_200_200/0/1630569190318/speiscience_logo?e=1778112000&v=beta&t=jQKfiWU3M22k72qG3i7_IuLKAKS1oG-oKAjfkKp6qfY',
+        role: '11-12 Science',
+        co: 'Sardar Patel, Bhavnagar',
+        type: 'HSC',
+        period: '',
+        desc: 'Completed Higher Secondary Education in the Science stream with a strong foundation in mathematics and analytical skills.',
+        tags: ['12th Science', 'Mathematics']
+      }
+    ],
+    projects: [
+      {
+        logo: 'https://play-lh.googleusercontent.com/LRYiMH4djvfAix9fjXL8EMb0pQgpoeAqN5Q6ezluio7Aw3kx3-XIJfFJh9rZuntduAEx=w240-h480-rw',
+        emoji: '',
+        screens: ['https://play-lh.googleusercontent.com/KZnFbkbXjU3up2sleH6WF871g6rrIcOl21q7yjDdeAawCu0VekunVR3uZzVeOk4Ar2I=w2560-h1440-rw','https://play-lh.googleusercontent.com/BBXTEmkIhyovf5b-1-HxoAtfLzOjx5AamGXltE2vzHWGDaH55-_ZjHIQuKIywxro9Z0=w526-h296-rw','https://play-lh.googleusercontent.com/KZnFbkbXjU3up2sleH6WF871g6rrIcOl21q7yjDdeAawCu0VekunVR3uZzVeOk4Ar2I=w2560-h1440-rw'],
+        name: 'PartyPal – User Application',
+        status: 'live',
+        liveUrl: 'https://play.google.com/store/apps/details?id=com.partypal.user&hl=en_IN',
+        desc: 'Live Analytics gives you a 360-degree view of your club\'s performance. Talent Booking, Content Management, AI Promotional Tools, and Event Promotion all in one platform.',
+        tech: ['Flutter','Dart','GetX','Firebase','FCM (Push Notifications)','Socket.IO','WebSockets','Razorpay','UPI Integration','Google Maps API','AR (Augmented Reality)','REST APIs','Hive (Local Storage)','Localization','OTP Authentication'],
+        color: '#1a2a3a',
+        role: 'Lead Flutter Developer',
+        description: 'Live Analytics gives you a 360-degree view of your club\'s performance by tracking sales, crowd ratios, footfalls, and popular items. Talent Booking, Content Management, AI Promotional Tools, and Event Promotion all in one platform.',
+        projectDetails: ['Club and event management system with performance analytics','Talent hiring platform for DJs, bands, and service providers','Content and media management for promotions','AI-powered promotional tools for marketing campaigns','Event promotion system to reach wider audience'],
+        responsibilities: ['Developed analytics dashboard for tracking sales and crowd insights','Built talent booking module with scalable backend integration','Implemented content management system for banners and posts','Integrated AI tools for automated promotional content generation','Handled event promotion flow and audience targeting system'],
+        keyFeatures: [
+          { icon: '', title: 'Live Analytics', desc: 'Track sales, crowd ratio, and performance metrics' },
+          { icon: '', title: 'Talent Booking', desc: 'Hire DJs, bands, and chefs easily' },
+          { icon: '', title: 'Content Management', desc: 'Manage banners and social media content' },
+          { icon: '', title: 'AI Promotion', desc: 'Create marketing content in one click' },
+          { icon: '', title: 'Event Promotion', desc: 'Reach more audience and boost visibility' },
+          { icon: '', title: 'Business Growth', desc: 'Data-driven tools to grow your club business' }
+        ]
+      },
+      {
+        logo: 'https://play-lh.googleusercontent.com/qWVrDMoZm5RXRDQk_PynHD-3aFdql337u-DMZGwyGSpE-oAqNwGm_lX1YJuHoU7A09c=w240-h480-rw',
+        emoji: '',
+        screens: ['https://play-lh.googleusercontent.com/RNZNV_zY83FoL--QOoMpkJALJ-_BABrKBEDeWvz8QStyEDfEmELG092mlhgTWP-MtA=w526-h296-rw','https://play-lh.googleusercontent.com/5hpRaFu3PXk8LSy6hoKZY-fSQESTWbvva_9Ill2-2R7XMu8hi84wB80FK6BtUcbC348=w526-h296-rw','https://play-lh.googleusercontent.com/RNZNV_zY83FoL--QOoMpkJALJ-_BABrKBEDeWvz8QStyEDfEmELG092mlhgTWP-MtA=w526-h296-rw'],
+        name: 'PartyPal Business',
+        status: 'live',
+        liveUrl: 'https://play.google.com/store/apps/details?id=com.partypal.owner&hl=en_IN',
+        desc: 'Gateway to the hottest parties, clubs, and events in town. Event discovery, AR-powered exploration, social connections, and complete party package booking.',
+        tech: ['Flutter','Dart','Firebase','REST APIs','Chart / Analytics Integration','Socket.IO','WebSockets','Razorpay','Cloud Functions','FCM (Push Notifications)','Hive','OTP Authentication'],
+        color: '#1a2a2a',
+        role: 'Full Stack Flutter Developer',
+        description: 'PartyPal is your gateway to the hottest parties, clubs, and events in town. Event discovery, AR-powered venue exploration, social connections, and complete party package booking.',
+        projectDetails: ['Event discovery platform covering clubs, concerts, and private parties','AR-based venue and event exploration for immersive previews','Social networking to connect with like-minded party enthusiasts','Complete party package booking with DJs, bands, and services'],
+        responsibilities: ['Developed user-friendly interface for seamless event browsing and booking','Implemented AR feature for real-time venue and vibe preview','Built social connection module for user interaction and networking','Integrated booking system for events and party services'],
+        keyFeatures: [
+          { icon: '', title: 'Event Discovery', desc: 'Explore club nights, concerts, and themed parties' },
+          { icon: '', title: 'AR Exploration', desc: 'Preview venues and party vibes before you go' },
+          { icon: '', title: 'Party Connect', desc: 'Meet and connect with like-minded people' },
+          { icon: '', title: 'Package Booking', desc: 'Book DJs, bands, decorators, and chefs' },
+          { icon: '', title: 'Nearby Events', desc: 'Find trending events happening around you' },
+          { icon: '', title: 'All-in-One App', desc: 'Everything you need for a perfect party' }
+        ]
+      },
+      {
+        logo: 'https://play-lh.googleusercontent.com/2qW16gyj4qsmUDIpFXHZ2xVpICXCpqhO3Y7-X6_NXPZXpWVqiL445L_C_V-VzuYJK0A=w240-h480-rw',
+        emoji: '',
+        screens: ['https://play-lh.googleusercontent.com/Yl3PruJJpbciTwyaGlO-jn3amd_AUMaGSrFNWgddFbZCmQpHVpTt1LkYO-16sJ6AFA=w526-h296-rw','https://play-lh.googleusercontent.com/O4jEhfixHPtdT-gsOmInbIIimCB-mxk9f3SOoAHGnYj8KPmg4lxLL_RTxU9yRUVuG3iJ=w526-h296-rw','https://play-lh.googleusercontent.com/BA46Cu1Xw5Yy6kCrpQw_rW3tKJkzIJlF4QrTMeE5mN9XcoCf5Rjoei5pva5hIch55H0=w526-h296-rw'],
+        name: 'PartyPal Guard',
+        status: 'live',
+        liveUrl: 'https://play.google.com/store/apps/details?id=com.guard.app.guard&hl=en_IN',
+        desc: 'Ultimate solution for event security and entry management. Scan tickets, manage guest lists in real time, prevent fraud, reduce queues for a fast and secure entry experience.',
+        tech: ['Flutter','Dart','Riverpod','QR/Barcode Scanner','Firebase','REST APIs','WebSockets','Offline Storage (Hive)','Authentication','Performance Optimization','OTP Authentication'],
+        color: '#1a1a2e',
+        role: 'Solo Flutter Developer',
+        description: 'PartyPal Guard is the ultimate solution to elevate event security and streamline entry management, empowering bouncers and entrance guards to seamlessly scan tickets, manage guest lists in real time, and prevent fraud.',
+        projectDetails: ['Event security and entry management system for clubs and events','QR/Barcode-based ticket scanning with fast verification','Real-time guest list management and validation','Fraud prevention system for secure event access','Queue optimization for smooth and efficient entry flow'],
+        responsibilities: ['Developed high-speed ticket scanning and validation module','Implemented real-time guest list synchronization with backend','Built secure system to prevent duplicate and fake entries','Optimized app performance for handling peak crowd scenarios','Designed smooth UI/UX for quick and efficient guard operations'],
+        keyFeatures: [
+          { icon: '', title: 'Smart Scanning', desc: 'Seamless ticket verification with QR/barcode scan' },
+          { icon: '', title: 'Guest Management', desc: 'Manage and verify guest lists in real-time' },
+          { icon: '', title: 'Secure Entry', desc: 'Prevent fraud and unauthorized access' },
+          { icon: '', title: 'Fast Processing', desc: 'Reduce queues with high-speed entry system' },
+          { icon: '', title: 'Live Updates', desc: 'Instant sync with backend for accurate data' },
+          { icon: '', title: 'Efficient Operations', desc: 'Improve overall event entry experience' }
+        ]
+      },
+      {
+        logo: 'https://play-lh.googleusercontent.com/GlmB5HjZxuLIPimoSyeYMvlkRjnu0I_wwVMfuiw4Au_4kuSZQidCtnoELbqWuQSC-crC=w240-h480-rw',
+        emoji: '',
+        screens: ['https://play-lh.googleusercontent.com/y25qF-s_9lVAa19ct0mjIpDjo38ytHbP9WsKxsSb5-8K_jMbLHoZm6SuC4j8PtxTbhg=w526-h296-rw','https://play-lh.googleusercontent.com/Uvg_SjndLHmQ23mJmlCfhJ3Ea_TpRfSb09Z8BEKnyaealv_freGtC41KP-iQbL5l68j2=w526-h296-rw','https://play-lh.googleusercontent.com/y25qF-s_9lVAa19ct0mjIpDjo38ytHbP9WsKxsSb5-8K_jMbLHoZm6SuC4j8PtxTbhg=w526-h296-rw'],
+        name: 'PartyPal Service Provider',
+        status: 'live',
+        liveUrl: 'https://play.google.com/store/apps/details?id=com.partypal.vendor&hl=en_IN',
+        desc: 'Ultimate party companion for DJs, chefs, performers, and creators. Showcase skills, get more bookings, manage schedules, and grow your career with real-time insights and fast payouts.',
+        tech: ['Flutter','Dart','Firebase','REST APIs','Chart / Analytics Integration','Socket.IO','WebSockets','Razorpay','Cloud Functions','FCM (Push Notifications)','Hive','OTP Authentication'],
+        color: '#1e1a2a',
+        role: 'Lead Mobile Developer',
+        description: 'PartyPal is your ultimate party companion for talented individuals. Showcase your skills, get more bookings, manage schedules, and grow your career with real-time insights and fast, secure payouts.',
+        projectDetails: ['All-in-one party ecosystem for users, organizers, and service providers','Event discovery with AR-based venue exploration','Social networking and community engagement features','Business tools for analytics, content management, and promotions','Talent marketplace for DJs, chefs, performers, and creators'],
+        responsibilities: ['Developed scalable multi-role platform supporting users, clubs, and talents','Implemented AR, real-time chat, and booking systems','Built analytics and dashboard tools for organizers','Integrated secure payments and payout systems','Handled performance optimization and data management across modules'],
+        keyFeatures: [
+          { icon: '', title: 'Event Discovery', desc: 'Find trending parties and events easily' },
+          { icon: '', title: 'AR Experience', desc: 'Explore venues with immersive previews' },
+          { icon: '', title: 'Community Connect', desc: 'Network with party lovers and professionals' },
+          { icon: '', title: 'Live Analytics', desc: 'Track performance and user engagement' },
+          { icon: '', title: 'Talent Marketplace', desc: 'Hire and showcase skills in one place' },
+          { icon: '', title: 'Secure Payments', desc: 'Fast bookings and reliable payouts system' }
+        ]
+      },
+      {
+        logo: 'https://play-lh.googleusercontent.com/LcyLaihjX_2h0vTGrhzWojMSYYO1cAx3hTF2wwpGdo0A_90TjgZfJbEeLGqHIevur2oE_H8oFBwnDZbcn_pb23w=w240-h480-rw',
+        emoji: '',
+        screens: ['https://play-lh.googleusercontent.com/uaYJyQ7CZPCwZnrTbsdw8qjtH1B1EcSLyhRCpTtwUqChWnJ6rdfA_o2rO5eutmoaOyUZqRa7E7s9hOCZda_W6A=w526-h296-rw','https://play-lh.googleusercontent.com/Fu9TzrOTGX2FI9gz-OSqkYJaxltyKFc6JKF0dUri_V9oqgDBP6dFC4WUuLBvY81AuVWk0C8YNHpdHR8T7CT5lUU=w526-h296-rw','https://play-lh.googleusercontent.com/TJyHmvV3qAqP1zOiFls-HEBbfNFyI0ysZvUGDtTFI-gimzGOew0GAiWy_tYnfaI6dn9iFTX0CMulHgYWI2mNSZA=w526-h296-rw'],
+        name: 'Ache Log Baniye ALB',
+        status: 'live',
+        liveUrl: 'https://play.google.com/store/apps/details?id=com.achelogbaniye.familyapp&hl=en_IN',
+        desc: 'Community-based app to connect family members, build detailed family trees, with matrimonial services, business networking, job opportunities, donations, and rental listings.',
+        tech: ['Flutter','Dart','GetX','Firebase','REST APIs','Cloud Firestore','Hive (Local Storage)','Image Upload','Dynamic UI Rendering','Localization','OTP Authentication'],
+        color: '#1e1a2a',
+        role: 'Lead Mobile Developer',
+        description: 'A community-based app to connect family members and strengthen relationships. Build detailed family trees, find matrimonial matches, network with the community, discover jobs, and access rental listings.',
+        projectDetails: ['Community-based platform to connect and manage family relationships','Family tree system with request-based member linking','Multi-service ecosystem including matrimonial, jobs, rent, and donations','Business networking module (Baniyagram) within community','Secure and organized digital family network'],
+        responsibilities: ['Developed dynamic family tree structure with relationship mapping','Implemented request and approval system for adding family members','Built multiple modules like matrimonial, jobs, rent, and donation','Designed scalable backend for handling large community data','Ensured user privacy, authentication, and secure data handling'],
+        keyFeatures: [
+          { icon: '', title: 'Family Tree', desc: 'Create and manage your complete family structure' },
+          { icon: '', title: 'Connect Members', desc: 'Send and accept family connection requests' },
+          { icon: '', title: 'Matrimonial', desc: 'Find suitable matches within trusted community' },
+          { icon: '', title: 'Jobs', desc: 'Discover job opportunities in your network' },
+          { icon: '', title: 'Rent & Services', desc: 'Find rentals and community services easily' },
+          { icon: '', title: 'Donations', desc: 'Support and contribute within your community' }
+        ]
+      },
+      {
+        logo: 'https://beta.vartalaap.io/assets/icons/logo-bg.svg',
+        emoji: '',
+        screens: ['https://beta.vartalaap.io/assets/icons/logo-bg.svg','https://beta.vartalaap.io/assets/icons/logo-bg.svg','https://beta.vartalaap.io/assets/icons/logo-bg.svg'],
+        name: 'WhatsApp Marketing Application',
+        status: 'dev',
+        liveUrl: '',
+        desc: 'Robust business communication platform for large-scale API-driven messaging. Bulk broadcasting, template messaging, real-time chat, video calling, and automated workflows.',
+        tech: ['Flutter','Dart','Riverpod','REST APIs','WebSockets','Socket.IO','Meta WhatsApp API','Push Notifications (FCM)','JWT Authentication','Encryption / Security','Hive','OTP Authentication'],
+        color: '#1e1a2a',
+        role: 'Lead Mobile Developer',
+        description: 'A robust business communication platform for large-scale API-driven messaging. Supports bulk broadcasting, template-based messaging, real-time chat, video calling, and automated workflows.',
+        projectDetails: ['Enterprise-level business communication platform for large-scale messaging','Meta API integration for transactional and promotional communication','Support for OTP, alerts, notifications, and bulk campaigns','Template-based messaging system for quick and approved communication','Real-time chat, video calling, and media sharing features'],
+        responsibilities: ['Developed scalable messaging architecture for high-volume delivery','Integrated Meta APIs for official WhatsApp business communication','Built bulk broadcasting and campaign management system','Implemented real-time one-to-one and group chat with media support','Ensured data security, encryption, and session management'],
+        keyFeatures: [
+          { icon: '', title: 'Bulk Messaging', desc: 'Send messages to large user base instantly' },
+          { icon: '', title: 'Template System', desc: 'Use pre-approved templates for communication' },
+          { icon: '', title: 'Alerts & OTP', desc: 'Reliable delivery of OTPs and notifications' },
+          { icon: '', title: 'Chat & Video', desc: 'Real-time chat and video calling support' },
+          { icon: '', title: 'Campaign Analytics', desc: 'Track performance and engagement metrics' },
+          { icon: '', title: 'High Security', desc: 'Secure, encrypted, and scalable system' }
+        ]
+      }
+    ]
+  };
+
+  const POWER_SKILLS = [
+    { icon: '📡', name: 'WebRTC', lvl: 'Expert', pct: 92, hot: true },
+    { icon: '🌍', name: 'Localization', lvl: 'Expert', pct: 95, hot: true },
+    { icon: '🔐', name: 'OTP Handler', lvl: 'Expert', pct: 96, hot: true },
+    { icon: '🔔', name: 'Push Notif.', lvl: 'Expert', pct: 94, hot: true },
+    { icon: '🔗', name: 'Deep Links', lvl: 'Expert', pct: 93, hot: true },
+    { icon: '🗄️', name: 'Local DB', lvl: 'Expert', pct: 97, hot: true },
+    { icon: '🔌', name: 'Socket.io', lvl: 'Expert', pct: 90, hot: true },
+    { icon: '🔑', name: 'Biometric Auth', lvl: 'Expert', pct: 88, hot: false },
+    { icon: '💳', name: 'Payment SDKs', lvl: 'Expert', pct: 91, hot: false },
+    { icon: '🧩', name: 'BLoC/Riverpod', lvl: 'Expert', pct: 95, hot: false },
+    { icon: '🎬', name: 'Animations', lvl: 'Expert', pct: 96, hot: false },
+    { icon: '🤝', name: 'REST/GraphQL', lvl: 'Expert', pct: 94, hot: false },
+  ];
+  const SKILL_GROUPS = [
+    { title: 'Flutter & Dart', skills: [{ n: 'Flutter', p: 100 }, { n: 'Dart', p: 100 }, { n: 'Custom Animations', p: 96 }, { n: 'Custom Widgets', p: 97 }] },
+    { title: 'State Management', skills: [{ n: 'GetX', p: 100 }, { n: 'Provider', p: 100 }, { n: 'BLoC', p: 80 }, { n: 'Riverpod', p: 85 }] },
+    { title: 'Backend & APIs', skills: [{ n: 'Firebase', p: 100 }, { n: 'REST APIs', p: 100 }, { n: 'Socket.io', p: 95 }, { n: 'GraphQL', p: 90 }] },
+    { title: 'Platform & Tools', skills: [{ n: 'Play Store / App Store', p: 95 }, { n: 'Git / GitHub', p: 96 }, { n: 'Figma → Flutter', p: 88 }, { n: 'CI/CD (Fastlane)', p: 82 }] },
+  ];
+
+  function screenSrc(p, idx) {
+    const s = p.screens && p.screens[idx];
+    if (s) return s;
+    return p.logo || '';
+  }
+
+  function phoneContent(src, fallbackEmoji, fontSize) {
+    if (src) return `<img src="${src}" onerror="this.style.display='none';this.nextSibling.style.display='flex'" style="width:100%;height:100%;object-fit:cover;display:block"><span style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:${fontSize}">${fallbackEmoji}</span>`;
+    return `<span style="font-size:${fontSize}">${fallbackEmoji}</span>`;
+  }
+
+  /* ── CONTACT COPY ── */
+  function copyContact(idx) {
+    const c = DATA.contact[idx];
+    const val = c.copyVal || c.val;
+    navigator.clipboard.writeText(val).catch(() => {});
+    const card = document.querySelectorAll('.con-card')[idx];
+    const flash = card.querySelector('.con-copied-flash');
+    flash.style.opacity = '1';
+    setTimeout(() => { flash.style.opacity = '0'; }, 1400);
+    showToast('✅ Copied: ' + val);
+  }
+
+  function render() {
+    document.getElementById('powerGrid').innerHTML = POWER_SKILLS.map(s =>
+      `<div class="power-card${s.hot?' hot':''}"><span class="pc-icon">${s.icon}</span><div class="pc-name">${s.name}</div><div class="pc-lvl">${s.lvl}</div><div class="pc-bar"><div class="pc-fill" data-p="${s.pct}"></div></div></div>`
+    ).join('');
+
+    document.getElementById('skillGroups').innerHTML = SKILL_GROUPS.map(g => `
+      <div class="skill-group">
+        <div class="sg-title">${g.title}</div>
+        ${g.skills.map(s => `<div class="skill-row"><div class="sk-top"><span class="sk-name">${s.n}</span><span class="sk-pct">${s.p}%</span></div><div class="sk-bar"><div class="sk-fill" data-p="${s.p}"></div></div></div>`).join('')}
+      </div>`).join('');
+
+    document.getElementById('expList').innerHTML = DATA.exp.map((e, i) => {
+      const dotContent = e.logo ? `<img src="${e.logo}" onerror="this.outerHTML='<span style=&quot;font-size:14px&quot;>${e.emoji}</span>'">` : `<span style="font-size:14px">${e.emoji}</span>`;
+      const logoBoxHTML = e.logo ? `<div class="exp-logo-box"><img src="${e.logo}" onerror="this.parentElement.style.display='none'"></div>` : `<div style="font-size:28px;line-height:1">${e.emoji}</div>`;
+      return `
+      <div class="exp-item">
+        <div class="exp-dot">${dotContent}</div>
+        <div class="exp-box" onclick="openExpDetail(${i})" style="cursor:pointer">
+          <div class="exp-header-row">
+            <div class="exp-header-left">${logoBoxHTML}<div><div class="exp-company-name">${e.co}</div><div class="exp-role-line"><span class="exp-role-text">${e.role}</span>${e.type?`<span class="exp-type-badge">${e.type}</span>`:''}</div></div></div>
+            ${e.period?`<div class="exp-period">${e.period}</div>`:''}
+          </div>
+          <div class="exp-desc">${e.desc}</div>
+          <div class="tags">${e.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+          <div class="proj-view-hint" style="margin-top:14px">👁 View projects & details →</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    document.getElementById('eduList').innerHTML = DATA.edu.map(e => {
+      const dotContent = e.logo ? `<img src="${e.logo}" style="background:#fff;padding:2px;" onerror="this.outerHTML='<span style=&quot;font-size:14px&quot;>${e.emoji}</span>'">` : `<span style="font-size:14px">${e.emoji}</span>`;
+      const logoBoxHTML = e.logo ? `<div class="exp-logo-box"><img src="${e.logo}" onerror="this.parentElement.style.display='none'"></div>` : `<div style="font-size:28px;line-height:1">${e.emoji}</div>`;
+      return `
+      <div class="exp-item">
+        <div class="exp-dot">${dotContent}</div>
+        <div class="exp-box">
+          <div class="exp-header-row">
+            <div class="exp-header-left">${logoBoxHTML}<div><div class="exp-company-name">${e.role}</div><div class="exp-role-line"><span class="exp-role-text">${e.co}</span>${e.type?`<span class="exp-type-badge">${e.type}</span>`:''}</div></div></div>
+            ${e.period?`<div class="exp-period">${e.period}</div>`:''}
+          </div>
+          <div class="exp-desc">${e.desc}</div>
+          <div class="tags">${e.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    document.getElementById('projGrid').innerHTML = DATA.projects.map((p, i) => {
+      const sc = p.screens[0] || p.logo || '';
+      return `
+      <div class="proj-card" onclick="openDetail(${i})">
+        <div class="proj-screen" style="background:${p.color}">
+          <div class="phone-frame">
+            <div class="ph-notch"></div>
+            <div class="ph-screen">${phoneContent(sc, p.emoji, '14px')}</div>
+            <div class="ph-home"></div>
+          </div>
+          <span class="proj-screen-label ${p.status==='live'?'live':'dev'}">${p.status==='live'?'● Live':'◐ In Dev'}</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">${p.name}</div>
+          <div class="proj-desc">${p.desc}</div>
+          <div class="proj-tech">${p.tech.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+          <div class="proj-view-hint">👁 View full details →</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    /* ── Contact cards with copy ── */
+    document.getElementById('contactWrap').innerHTML = DATA.contact.map((c, i) => `
+      <div class="con-card" onclick="copyContact(${i})">
+        <div class="con-icon ${c.cls}">${c.icon}</div>
+        <div class="con-info"><div class="con-label">${c.label}</div><div class="con-val">${c.val}</div></div>
+        <div class="con-copy-hint">click to copy</div>
+        <div class="con-copied-flash">✓ Copied!</div>
+      </div>`).join('');
+
+    document.getElementById('heroName').textContent = DATA.hero.name;
+
+    /* ── Set share URL based on current location ── */
+    const urlEl = document.getElementById('shareUrl');
+    const isLive = window.location.hostname !== '' && window.location.protocol !== 'file:';
+    if (isLive) {
+      urlEl.value = window.location.href;
+    } else {
+      urlEl.value = 'https://darshan238.github.io/portfolio';
+    }
+  }
+
+  function animateBars() {
+    document.querySelectorAll('.pc-fill,.sk-fill').forEach(b => { b.style.width = b.dataset.p + '%' });
+  }
+
+  function openExpDetail(i) {
+    const e = DATA.exp[i];
+    const sc = (s) => {
+      if (s === 'live') return { bg: 'rgba(34,197,94,.12)', color: '#22c55e', border: 'rgba(34,197,94,.3)', label: '● Live' };
+      if (s === 'ongoing') return { bg: 'rgba(2,125,253,.12)', color: '#54C5F8', border: 'rgba(2,125,253,.3)', label: '◉ Ongoing' };
+      if (s === 'In Dev') return { bg: 'rgba(255,109,0,.12)', color: '#FF6D00', border: 'rgba(255,109,0,.3)', label: '◐ In Dev' };
+      if (s === 'client') return { bg: 'rgba(168,85,247,.12)', color: '#A855F7', border: 'rgba(168,85,247,.3)', label: '◆ Client' };
+      return { bg: 'rgba(156,163,175,.12)', color: '#9CA3AF', border: 'rgba(156,163,175,.3)', label: '• Unknown' };
+    };
+    const projectsHTML = e.projects ? e.projects.map((p, pi) => {
+      const s = sc(p.status);
+      const logoHTML = p.logo ? `<img src="${p.logo}" style="width:28px;height:28px;border-radius:7px;object-fit:cover;" onerror="this.outerHTML='<span style=&quot;font-size:18px&quot;>${p.icon}</span>'">` : `<span style="font-size:18px">${p.icon}</span>`;
+      const liveBtn = (p.liveUrl && p.status === 'live') ? `<a href="${p.liveUrl}" target="_blank" rel="noopener" class="live-app-btn"><div class="lbdot"></div>View Live App →</a>` : '';
+      return `
+        <div class="proj-sub-section">
+          <div class="proj-sub-title">
+            <div class="proj-sub-num">${pi+1}</div>
+            ${logoHTML}
+            <span style="flex:1">${p.name}</span>
+            <span style="font-size:10px;font-family:'JetBrains Mono',monospace;padding:3px 10px;border-radius:20px;background:${s.bg};color:${s.color};border:0.5px solid ${s.border};white-space:nowrap">${s.label}</span>
+          </div>
+          <div class="detail-block">
+            <div class="detail-block-title">Description</div>
+            <div class="detail-block-text">${p.description}</div>
+            ${liveBtn}
+          </div>
+          <div class="detail-block">
+            <div class="detail-block-title">Project Details</div>
+            <ul class="detail-list">${p.projectDetails.map(d=>`<li>${d}</li>`).join('')}</ul>
+          </div>
+          <div class="detail-block">
+            <div class="detail-block-title">Responsibilities</div>
+            <ul class="detail-list">${p.responsibilities.map(r=>`<li>${r}</li>`).join('')}</ul>
+          </div>
+        </div>`;
+    }).join('<div style="height:1px;background:var(--br);margin:8px 0 28px"></div>') : '';
+
+    document.getElementById('pdpBody').innerHTML = `
+      <div class="company-header-banner">
+        ${e.logo ? `<img src="${e.logo}" style="height:46px;max-width:110px;object-fit:contain;background:#fff;padding:6px 10px;border-radius:10px;flex-shrink:0;" onerror="this.outerHTML='<span style=&quot;font-size:32px&quot;>${e.emoji}</span>'">` : `<span style="font-size:32px">${e.emoji}</span>`}
+        <div>
+          <div class="company-name-big">${e.co}</div>
+          <div class="company-meta">
+            <span class="company-badge cb-role">${e.role}</span>
+            ${e.type?`<span class="company-badge cb-type">${e.type}</span>`:''}
+            ${e.period?`<span class="company-badge cb-period">🗓 ${e.period}</span>`:''}
+          </div>
+        </div>
+      </div>
+      <div class="detail-block" style="margin-bottom:28px">
+        <div class="detail-block-title">Overview</div>
+        <div class="detail-block-text">${e.desc}</div>
+      </div>
+      <div style="margin-bottom:16px">
+        <div class="pdp-sec-label">Tech Stack</div>
+        <div class="pdp-tech-wrap">${e.tags.map(t=>`<span class="pdp-tech-tag">${t}</span>`).join('')}</div>
+      </div>
+      <div style="height:1px;background:var(--br);margin:24px 0"></div>
+      <div class="pdp-sec-label" style="margin-bottom:20px">Projects Developed</div>
+      ${projectsHTML}`;
+
+    const ov = document.getElementById('projDetailOverlay');
+    ov.style.display = 'flex';
+    requestAnimationFrame(() => ov.classList.add('open'));
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openDetail(i) {
+    const p = DATA.projects[i];
+    const s0 = screenSrc(p, 0), s1 = screenSrc(p, 1), s2 = screenSrc(p, 2);
+    const headerIcon = p.logo
+      ? `<div class="pdp-emoji"><img src="${p.logo}" onerror="this.style.display='none'"><span style="display:none;font-size:34px">${p.emoji}</span></div>`
+      : `<div class="pdp-emoji">${p.emoji}</div>`;
+    const liveBtn = (p.liveUrl && p.status === 'live')
+      ? `<a href="${p.liveUrl}" target="_blank" rel="noopener" class="live-app-btn" style="margin-bottom:24px"><div class="lbdot"></div>View Live App →</a>`
+      : '';
+
+    document.getElementById('pdpBody').innerHTML = `
+      <div class="pdp-header">
+        ${headerIcon}
+        <div>
+          <div class="pdp-proj-name">${p.name}</div>
+          <span class="pdp-status-badge ${p.status==='live'?'live':'dev'}">${p.status==='live'?'● Live':'◐ In Development'}</span>
+        </div>
+      </div>
+      <div class="pdp-mockup" style="background:${p.color}22;border-color:${p.color}55">
+        <div class="pdp-phone-sm"><div class="pdp-ph-notch-sm"></div><div class="pdp-pscreen">${phoneContent(s0, p.emoji, '18px')}</div><div class="pdp-ph-home-sm"></div></div>
+        <div class="pdp-phone"><div class="pdp-ph-notch"></div><div class="pdp-pscreen">${phoneContent(s1, p.emoji, '22px')}</div><div class="pdp-ph-home"></div></div>
+        <div class="pdp-phone-sm"><div class="pdp-ph-notch-sm"></div><div class="pdp-pscreen">${phoneContent(s2, p.emoji, '18px')}</div><div class="pdp-ph-home-sm"></div></div>
+      </div>
+      ${liveBtn}
+      ${p.role?`<div class="role-banner"><div class="role-icon">👤</div><div><div class="role-label">My Role</div><div class="role-val">${p.role}</div></div></div>`:''}
+      ${p.description?`<div class="detail-block"><div class="detail-block-title">Description</div><div class="detail-block-text">${p.description}</div></div>`:''}
+      ${p.projectDetails?`<div class="detail-block"><div class="detail-block-title">Project Details</div><ul class="detail-list">${p.projectDetails.map(d=>`<li>${d}</li>`).join('')}</ul></div>`:''}
+      ${p.responsibilities?`<div class="detail-block"><div class="detail-block-title">Responsibilities</div><ul class="detail-list">${p.responsibilities.map(r=>`<li>${r}</li>`).join('')}</ul></div>`:''}
+      <div class="pdp-section">
+        <div class="pdp-sec-label">Tech Stack</div>
+        <div class="pdp-tech-wrap">${p.tech.map(t=>`<span class="pdp-tech-tag">${t}</span>`).join('')}</div>
+      </div>
+      ${p.keyFeatures?`<div class="pdp-section"><div class="pdp-sec-label">Key Features</div><div class="features-grid">${p.keyFeatures.map(f=>`<div class="feat-item"><div class="feat-icon">${f.icon}</div><div><div class="feat-title">${f.title}</div><div class="feat-desc">${f.desc}</div></div></div>`).join('')}</div></div>`:''}`;
+
+    const ov = document.getElementById('projDetailOverlay');
+    ov.style.display = 'flex';
+    requestAnimationFrame(() => ov.classList.add('open'));
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDetail() {
+    const ov = document.getElementById('projDetailOverlay');
+    ov.classList.remove('open');
+    setTimeout(() => { ov.style.display = 'none'; document.body.style.overflow = '' }, 420);
+  }
+  function handleDetailOverlayClick(e) { if (e.target === document.getElementById('projDetailOverlay')) closeDetail(); }
+  function openShare() { document.getElementById('shareModal').classList.add('open') }
+  function closeShare() { document.getElementById('shareModal').classList.remove('open') }
+  function handleShareOverlayClick(e) { if (e.target === document.getElementById('shareModal')) closeShare() }
+  function copyShareUrl() {
+    const btn = document.getElementById('smCopyBtn');
+    const url = document.getElementById('shareUrl').value;
+    navigator.clipboard.writeText(url).catch(()=>{});
+    btn.textContent = '✓ Copied!'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied') }, 2500);
+  }
+  function shareViaWhatsApp() {
+    const name = DATA.hero.name;
+    const url = document.getElementById('shareUrl').value;
+    const isLive = window.location.protocol !== 'file:';
+    const urlLine = isLive ? `\n🔗 Portfolio: ${url}` : '';
+    const text = encodeURIComponent(`👋 Hi! I'm *${name}*, a Flutter Developer.\n\n📱 *${DATA.hero.yrs}* Years Experience\n🚀 *${DATA.hero.apps}* Apps Built\n👥 *${DATA.hero.clients}* Happy Clients${urlLine}\n\n📧 ${DATA.contact[0].val}\n\n_Contact me for Flutter development work!_`);
+    window.open(`https://wa.me/?text=${text}`);
+    closeShare();
+  }
+  function copyProfileText() {
+    const name = DATA.hero.name;
+    const url = document.getElementById('shareUrl').value;
+    const isLive = window.location.protocol !== 'file:';
+    const urlLine = isLive ? `\n🔗 Portfolio: ${url}` : '';
+    const text = `${name} | Flutter Developer\n${'─'.repeat(40)}\n${DATA.hero.bio}\n\n📊 Stats:\n• Experience: ${DATA.hero.yrs} Years\n• Apps Built: ${DATA.hero.apps}\n• Clients: ${DATA.hero.clients}${urlLine}\n\n📬 Contact:\n• ${DATA.contact[0].val}\n• ${DATA.contact[1].val}\n• ${DATA.contact[2].val}`;
+    navigator.clipboard.writeText(text).then(() => { showToast('📋 Profile summary copied!'); closeShare(); }).catch(() => showToast('❌ Copy failed'));
+  }
+  let toastTimer;
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+  }
+  function goTo(id) { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }
+
+  const IO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('vis');
+        if (e.target.id === 'skills') setTimeout(animateBars, 200);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => IO.observe(el));
+
+  (function spawnParticles() {
+    const c = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const sz = Math.random() * 4 + 2;
+      p.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;background:${Math.random()>.5?'#027DFD':'#54C5F8'};animation-duration:${6+Math.random()*10}s;animation-delay:${Math.random()*8}s`;
+      c.appendChild(p);
+    }
+  })();
+
+  render();
+  </script>
+</body>
+</html>
